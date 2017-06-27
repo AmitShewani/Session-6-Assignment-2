@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment 6.2 - Front End Web Development Fundamentals</title>
+	<style type="text/css">
+		/*Applying basic style to h1 and body contents*/
+		h1
+		{
+			color:blue;
+			font-size: 30px;
+			font-family: arial;
+			text-decoration: underline;
+		}
+		body
+		{
+			font-size: 18px;
+			font-family: sans-serif;
+		}
+	</style>
+</head>
+<!--When the body elements loads, it will display the current array elements-->
+<body onload="bodyLoad();">
+<h1> This assignment will demonstrate the use of javascript using arrays!</h1>
+<br><hr>
+<p id="currArrayList">Current Array elements: </p><p id="initialArrayElements"></p>
+<br><p>Click the below button to push 4 elements: 10,11,12,13 </p>
+<br><input type="button" name="pushEle" value="Push elements" onclick="pushElements();">
+<br><p id="updArrAfterPush">Updated array elements: </p><br>
+<br><p>Click the below button to pop last 4 elements: 10,11,12,13 </p>
+<br><input type="button" name="popEle" value="Pop elements" onclick="popElements();">
+<br><p id="updArrAfterPop">Updated array elements: </p><br>
+<br><p>Click the below button to display 4 elements from index 1 to 4 i.e.: 2,3,4,5 </p>
+<br><input type="button" name="sliceEle" value="Display 4 elements" onclick="sliceElements();">
+<br><p id="updArrAfterSlice">Updated array elements: </p><br>
+<br><p>Click the below button to iterate elements using ForEach loop </p>
+<br><input type="button" name="forEachEle" value="Display latest elements" onclick="displayLatestArrayElements();">
+<br><p id="dispArrayUsingForEach">ForEach array elements: <br></p><br>
+<script type="text/javascript">
+	var arrayEle=[1,2,3,4,5,6,7,8,9];
+	/*When the body elements loads, it will display the current array elements*/
+	function bodyLoad()
+	{
+		document.getElementById("initialArrayElements").innerHTML=arrayEle.join(",");
+	}
+	/*Displays array elements*/
+	function displayArrayElements()
+	{
+		return arrayEle.join(",");
+	}
+	/*Inserts 4 elements into the array i.e. 10,11,12,13*/
+	function pushElements()
+	{
+		for (var i = 10; i < 14; i++) {
+			arrayEle.push(i);
+		}
+		document.getElementById('updArrAfterPush').innerHTML=document.getElementById('updArrAfterPush').innerHTML+"<br>"+displayArrayElements();
+	}
+/*Pops the last 4 inserted elements*/
+	function popElements()
+	{
+for (var i = 0; i < 4; i++) {
+	arrayEle.pop();
+}
+document.getElementById('updArrAfterPop').innerHTML=document.getElementById('updArrAfterPop').innerHTML+"<br>"+displayArrayElements();
+	}
+/*Extracts elements from first till fourth index and displays the list*/
+	function sliceElements()
+	{
+		var slicedElements=arrayEle.slice(1,5);
+		document.getElementById('updArrAfterSlice').innerHTML=document.getElementById('updArrAfterSlice').innerHTML+"<br>"+slicedElements.join(",");
+	}
+
+/*Displays latest array elements*/
+	function displayLatestArrayElements()
+	{
+		arrayEle.forEach(arrayIterativeFunction);
+	}
+
+/*Used by displayLatestArrayElements() to display array list*/
+	function arrayIterativeFunction(item,index)
+	{
+dispArrayUsingForEach.innerHTML=dispArrayUsingForEach.innerHTML+"index["+index+"]: "+item+"<br>";
+	}
+
+</script>
+</body>
+</html>
